@@ -2,6 +2,7 @@ package org.happybean.test;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.junit.Test;
@@ -18,6 +19,14 @@ public class MyRealmTest {
         //构建securityManager
         DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
         defaultSecurityManager.setRealm(myRealm);
+
+        //加密认证
+//        HashedCredentialsMatcher matcher =new HashedCredentialsMatcher();
+//        matcher.setHashAlgorithmName("md5");
+//        matcher.setHashIterations(1);
+//        myRealm.setCredentialsMatcher(matcher);
+
+
         //主体提交认证请求
         SecurityUtils.setSecurityManager(defaultSecurityManager);
         Subject subject = SecurityUtils.getSubject();
